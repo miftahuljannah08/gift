@@ -27,13 +27,28 @@ body{
     color:white;
 }
 
-/* BINTANG */
+/* BACKGROUND BLUR */
+
+.bg-blur{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url('foto1.jpg');
+    background-size:cover;
+    background-position:center;
+    filter:blur(20px) brightness(0.4);
+    transform:scale(1.1);
+    z-index:-2;
+}
+
+/* STARS */
 
 .stars{
-    position:absolute;
+    position:fixed;
     width:100%;
     height:100%;
     overflow:hidden;
+    z-index:-1;
 }
 
 .star{
@@ -49,42 +64,44 @@ body{
     0%,100%{
         opacity:0.2;
     }
+
     50%{
         opacity:1;
     }
 }
 
-/* BUTTERFLY */
+/* FLOWERS */
 
-.butterfly{
-    position:absolute;
-    font-size:30px;
-    animation:fly 15s linear infinite;
+.flower{
+    position:fixed;
+    top:-10vh;
+    font-size:25px;
+    animation:fall linear infinite;
     opacity:0.8;
 }
 
-@keyframes fly{
+@keyframes fall{
+
     0%{
-        transform:translate(-10vw,100vh) rotate(0deg);
+        transform:translateY(-10vh) rotate(0deg);
     }
 
     100%{
-        transform:translate(110vw,-20vh) rotate(360deg);
+        transform:translateY(110vh) rotate(360deg);
     }
 }
 
-/* CONTAINER */
+/* MAIN */
 
 .container{
     position:relative;
     z-index:10;
     width:90%;
-    max-width:900px;
+    max-width:1000px;
     margin:auto;
     padding-top:80px;
     padding-bottom:80px;
     text-align:center;
-    animation:fadeIn 2s ease;
 }
 
 .small{
@@ -103,7 +120,7 @@ h1{
 .subtitle{
     margin-top:10px;
     font-size:22px;
-    color:#cbd5e1;
+    color:#e2e8f0;
     line-height:1.8;
 }
 
@@ -124,13 +141,12 @@ button{
 
 button:hover{
     transform:scale(1.05);
-    box-shadow:0 0 40px rgba(96,165,250,1);
 }
 
-/* SURPRISE BOX */
+/* MESSAGE */
 
 .message-box{
-    margin-top:40px;
+    margin-top:50px;
     background:rgba(255,255,255,0.08);
     backdrop-filter:blur(12px);
     border:1px solid rgba(255,255,255,0.2);
@@ -138,38 +154,73 @@ button:hover{
     border-radius:30px;
     display:none;
     animation:showBox 1s ease;
-    box-shadow:0 0 30px rgba(96,165,250,0.3);
 }
 
-.message-box h2{
-    font-size:45px;
-    margin-bottom:20px;
-    color:#bfdbfe;
-    font-family:'Great Vibes',cursive;
+/* POLAROID */
+
+.gallery{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
 }
 
-.message-box p{
-    line-height:2;
-    font-size:20px;
-    color:#e2e8f0;
+.polaroid{
+    background:white;
+    padding:15px 15px 40px;
+    border-radius:12px;
+    width:220px;
+    transform:rotate(-3deg);
+    transition:0.4s;
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
 }
+
+.polaroid:nth-child(2){
+    transform:rotate(4deg);
+}
+
+.polaroid:nth-child(3){
+    transform:rotate(-5deg);
+}
+
+.polaroid:hover{
+    transform:scale(1.05) rotate(0deg);
+}
+
+.polaroid img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.caption{
+    margin-top:15px;
+    color:#111827;
+    font-weight:bold;
+}
+
+/* LOVE */
 
 .love{
-    margin-top:25px;
-    font-size:45px;
+    margin-top:30px;
+    font-size:50px;
     animation:pulse 2s infinite;
 }
 
 @keyframes pulse{
+
     0%,100%{
         transform:scale(1);
     }
+
     50%{
         transform:scale(1.2);
     }
 }
 
 @keyframes showBox{
+
     from{
         opacity:0;
         transform:translateY(30px);
@@ -181,69 +232,111 @@ button:hover{
     }
 }
 
-@keyframes fadeIn{
-    from{
-        opacity:0;
-    }
-
-    to{
-        opacity:1;
-    }
-}
-
 </style>
 
 </head>
+
 <body>
+
+<!-- BACKGROUND -->
+<div class="bg-blur"></div>
 
 <!-- STARS -->
 <div class="stars" id="stars"></div>
-
-<!-- BUTTERFLIES -->
-<div class="butterfly" style="left:5%; animation-delay:0s;">🦋</div>
-<div class="butterfly" style="left:25%; animation-delay:4s;">💙</div>
-<div class="butterfly" style="left:60%; animation-delay:7s;">🦋</div>
-<div class="butterfly" style="left:80%; animation-delay:10s;">✨</div>
 
 <!-- MAIN -->
 <div class="container">
 
     <div class="small">
-        Hai Sahabatkuu 💙
+        specially for you 💙
     </div>
 
-    <h1>Untuk Anii</h1>
+    <h1>Anii</h1>
 
     <div class="subtitle">
-        Ada sesuatu untuk dirimu ✨<br>
-        sesuatu yang mungkin sederhana,<br>
-        tapi dibuat dengan tulus 💙
+        ada sesuatu yang dibuat khusus untuk dirimu ✨ <br>
+         "selamat membaca, jangan nangis ya haha"
     </div>
 
     <button onclick="showMessage()">
-        Klik untuk Surprise 💌
+        buka surprise 💌
     </button>
 
     <!-- MESSAGE -->
     <div class="message-box" id="message">
 
-        <h2>Dear Anii 💙</h2>
+        <h2 style="font-size:50px; font-family:'Great Vibes'; color:#bfdbfe;">
+            Dear Anii 💙
+        </h2>
 
-        <p>
-            Makasih yaa udah selalu ada 💙<br><br> 
+        <div class="letter">
 
-            Makasih udah jadi tempat diri ini berkeluh kesah, 
-            jadi tempat ternyaman,dan tempat untuk "pulang" ketika diri ini merasa lelah.<br><br> 
+<p>
+aniiii 💙
+</p>
 
-            Semoga semua hal baik selalu datang ke hidupmu anii ✨<br> 
-            Semoga setiap langkahmu selalu dimudahkan,<br> 
-            dan semoga dirimu selalu bahagia anii🌸<br><br> 
+<p>
+diri ini cuma mau bilang makasih yaa,<br>
+udah jadi salah satu orang paling baik<br>
+yang pernah diri ini kenal ✨
+</p><br>
 
-            Sehat selalu and FIGHTINGG 💙
-        </p>
+<p>
+makasih karena selalu ada,<br>
+selalu dengerin cerita,<br>
+dan selalu bikin hari-hari terasa lebih ringan 🌸
+</p><br>
+
+<p>
+kadang diri ini mikir...<br>
+gimana ya kalau diri ini gak kenal dirimu?<br>
+kayaknya hidup ini bakal lebih sepi deh 😭💙
+</p><br>
+
+<p>
+semoga hal-hal baik selalu datang<br>
+ke hidupmu anii,<br><br>
+semoga dirimu selalu dikelilingi<br>
+orang-orang baik,<br>
+dan semoga semua yang dirimu usahakan<br>
+satu-satu bisa tercapai ✨
+</p><br>
+
+<p>
+dan kalau suatu hari dirimu capek,<br>
+ingat aja...<br>
+masih ada orang yang selalu doain dirimu diam-diam <br>🌙✨
+</p>
+
+</div>
+        <!-- GALLERY -->
+        <div class="gallery">
+
+            <div class="polaroid">
+                <img src="foto1.jpeg">
+                <div class="caption">
+                    💙 favorite person
+                </div>
+            </div>
+
+            <div class="polaroid">
+                <img src="foto2.jpeg">
+                <div class="caption">
+                    ✨ pretty smile
+                </div>
+            </div>
+
+            <div class="polaroid">
+                <img src="foto3.jpeg">
+                <div class="caption">
+                    🌸 precious moments
+                </div>
+            </div>
+
+        </div>
 
         <div class="love">
-            💙✨🦋
+            💙🦋✨
         </div>
 
     </div>
@@ -252,11 +345,11 @@ button:hover{
 
 <script>
 
-/* BINTANG */
+/* STARS */
 
 const stars = document.getElementById("stars");
 
-for(let i=0;i<120;i++){
+for(let i=0;i<150;i++){
 
     let star = document.createElement("div");
 
@@ -269,6 +362,23 @@ for(let i=0;i<120;i++){
     star.style.animationDelay = Math.random()*5+"s";
 
     stars.appendChild(star);
+}
+
+/* FLOWERS */
+
+for(let i=0;i<30;i++){
+
+    let flower = document.createElement("div");
+
+    flower.classList.add("flower");
+
+    flower.innerHTML = "💙";
+
+    flower.style.left = Math.random()*100+"vw";
+
+    flower.style.animationDuration = (Math.random()*5+5)+"s";
+
+    document.body.appendChild(flower);
 }
 
 /* SHOW MESSAGE */
